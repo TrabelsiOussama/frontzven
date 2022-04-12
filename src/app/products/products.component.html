@@ -1,0 +1,50 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by title"
+        [(ngModel)]="sTitle"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTitle()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div  class="list-group-item" style="width: 18rem;" *ngFor="let products of meals; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActivemeal(products, i)"
+    >
+      <img src="..." class="list-group-item-img-top" alt="...">
+      <div class="list-group-item-body">
+        <h5 class="list-group-item-title">{{ products.product_title }}</h5>
+        <p class="list-group-item-text">Price :</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentmeal.id_product">
+      <h4>meal</h4>
+      <div>
+        <label><strong>Title:</strong></label> {{ currentmeal.title }}
+      </div>
+      <div>
+        <label><strong>Description:</strong></label>
+        {{ currentmeal.product_description }}
+      </div>
+    </div>
+    <div *ngIf="!currentmeal">
+      <br />
+      <p>Please click on a meal...</p>
+    </div>
+  </div>
+</div>
+
